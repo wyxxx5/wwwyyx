@@ -1,0 +1,28 @@
+姓名：微信
+在：
+  工作流程_调度：
+  浙江：
+    # 代表国际标准时间23点0分，北京时间需要+8小时，代表北京时间上午7点运行
+-计划任务：'0 23 * * *'
+职位：
+#将工作流程中运行的所有作业组合在一起
+  建造者：
+  #定义build名为作业的属性。子键将定义作业的属性
+    运行系统： ubuntu-20.04
+    步骤：
+      -使用： actions/checkout@v2
+    
+      -名称：设置Python 3.9
+        使用： actions/setup-python@v2
+        和：
+          python-版本：3.9.1
+      -名称：设置时区
+        运行：|
+          cp /usr/share/zoneinfo/Asia/上海 /etc/localtime
+      -名称：安装pip包
+        运行：|
+          python -m pip install --升级 pip
+          pip3 install -r 要求.txt
+      -姓名：微信
+        运行：|
+          python3 main.py
